@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requirements
 
-Things you may want to cover:
+* Ruby 3.0.1
+* Rails 6.1.4
+* PostgreSQL
 
-* Ruby version
+### Installation
 
-* System dependencies
+Setup For this app should be pretty vanilla for rails apps.
 
-* Configuration
+1. Clone the respository
+2. Run Bundle Install ```bundle install```
+3. Setup Database ```rake db:create && rake db:migrate```
 
-* Database creation
+### Run Server
 
-* Database initialization
+* `rails s`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Open browser and go to [http://localhost:3000](http://localhost:3000)
