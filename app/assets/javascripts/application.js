@@ -8,6 +8,9 @@
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
 //
 
-//= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
