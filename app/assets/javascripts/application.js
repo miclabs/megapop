@@ -8,9 +8,10 @@
 // compiled file. JavaScript code in this file should be added after the last require_* statement.
 //
 
-//= require jquery3
+//= require theme/plugins.bundle
+//= require theme/prismjs.bundle
+//= require theme/scripts.bundle
+//= require theme/login
+//= require theme/payment_wizard
 //= require jquery_ujs
 //= require popper
-//= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
