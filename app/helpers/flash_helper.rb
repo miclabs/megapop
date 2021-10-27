@@ -1,5 +1,5 @@
 module FlashHelper
-	 def bootstrap_flash_class(flash_type)
+   def bootstrap_flash_class(flash_type)
     { success: 'alert-success',
       error:   'alert-danger',
       alert:   'alert-warning',
