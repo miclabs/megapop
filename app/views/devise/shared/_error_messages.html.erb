@@ -1,9 +1,3 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li class='text-error'><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+  <%= devise_toastr_flash %>
 <% end %>

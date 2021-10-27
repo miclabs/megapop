@@ -1,9 +1,18 @@
 module FlashHelper
-   def bootstrap_flash_class(flash_type)
-    { success: 'alert-success',
-      error:   'alert-danger',
-      alert:   'alert-warning',
-      notice:  'alert-info'
-    }[flash_type.to_sym] || flash_type.to_s
+  def toastr_flash
+    flash.each_with_object([]) do |(type, message), flash_messages|
+      type = 'success' if type == 'notice'
+      type = 'error' if type == 'alert'
+      text = "<script>toastr.#{type}(\"#{message}\", '', { closeButton: true, progressBar: true })</script>"
+      flash_messages << text.html_safe if message
+    end.join("\n").html_safe
+  end
+
+  def devise_toastr_flash
+    resource.errors.full_messages.map do |message|
+      type = 'error'
+      text = "<script>toastr.#{type}(\"#{message}\", '', { closeButton: true, progressBar: true })</script>"
+      text.html_safe
+    end.join("\n").html_safe
   end
 end
