@@ -293,6 +293,10 @@ var KTLogin = function() {
 			clickableSteps: false // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
 		});
 
+		$('[data-wizard-type="action-prev"]').click(function(){
+			$('[data-wizard-type="action-next-1"]').toggle(wizardObj.getStep() < 3)
+		})
+
 		// Validation before going to next page
 		$('[data-wizard-type="action-next-1"], #kt_login_signup_form_submit_button').click(function(e){
 			e.preventDefault();
