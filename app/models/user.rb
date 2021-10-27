@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   enum role: { creator: 0, admin: 1, credit_manager: 2}
 
-  validates_presence_of :ssn, :zip_code, :phone_number, :first_name, :last_name
+  validates_presence_of :ssn, :zip_code, :phone_number, :first_name, :last_name, on: :create
 end
