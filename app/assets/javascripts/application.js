@@ -11,7 +11,7 @@
 //= require theme/plugins.bundle
 //= require theme/prismjs.bundle
 //= require theme/scripts.bundle
-//= require theme/login
-//= require theme/payment_wizard
+//= require theme/login-3
+//= require theme/wizard-2
 //= require jquery_ujs
 //= require popper
