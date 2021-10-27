@@ -193,34 +193,24 @@ var KTLogin = function() {
 			form,
 			{
 				fields: {
-					fname: {
+					'user[ssn]': {
 						validators: {
 							notEmpty: {
-								message: 'First name is required'
+								message: 'SSN is required'
 							}
 						}
 					},
-					lname: {
+					'user[zip_code]': {
 						validators: {
 							notEmpty: {
-								message: 'Last Name is required'
+								message: 'Zipcode is required'
 							}
 						}
 					},
-					phone: {
+					'user[phone_number]': {
 						validators: {
 							notEmpty: {
 								message: 'Phone is required'
-							}
-						}
-					},
-					email: {
-						validators: {
-							notEmpty: {
-								message: 'Email is required'
-							},
-							emailAddress: {
-								message: 'The value is not a valid email address'
 							}
 						}
 					}
@@ -232,43 +222,23 @@ var KTLogin = function() {
 			}
 		));
 
+
 		// Step 2
 		validations.push(FormValidation.formValidation(
 			form,
 			{
 				fields: {
-					address1: {
+					'user[first_name]': {
 						validators: {
 							notEmpty: {
-								message: 'Address is required'
+								message: 'First name is required'
 							}
 						}
 					},
-					postcode: {
+					'user[last_name]': {
 						validators: {
 							notEmpty: {
-								message: 'Postcode is required'
-							}
-						}
-					},
-					city: {
-						validators: {
-							notEmpty: {
-								message: 'City is required'
-							}
-						}
-					},
-					state: {
-						validators: {
-							notEmpty: {
-								message: 'State is required'
-							}
-						}
-					},
-					country: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
+								message: 'Last name is required'
 							}
 						}
 					}
@@ -285,78 +255,27 @@ var KTLogin = function() {
 			form,
 			{
 				fields: {
-					delivery: {
+					'user[email]': {
 						validators: {
 							notEmpty: {
-								message: 'Delivery type is required'
-							}
-						}
-					},
-					packaging: {
-						validators: {
-							notEmpty: {
-								message: 'Packaging type is required'
-							}
-						}
-					},
-					preferreddelivery: {
-						validators: {
-							notEmpty: {
-								message: 'Preferred delivery window is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
-
-		// Step 4
-		validations.push(FormValidation.formValidation(
-			form,
-			{
-				fields: {
-					ccname: {
-						validators: {
-							notEmpty: {
-								message: 'Credit card name is required'
-							}
-						}
-					},
-					ccnumber: {
-						validators: {
-							notEmpty: {
-								message: 'Credit card number is required'
+								message: 'Email is required'
 							},
-							creditCard: {
-								message: 'The credit card number is not valid'
+							emailAddress: {
+								message: 'The value is not a valid email address'
 							}
 						}
 					},
-					ccmonth: {
+					'user[password]': {
 						validators: {
 							notEmpty: {
-								message: 'Credit card month is required'
+								message: 'Password is required'
 							}
 						}
 					},
-					ccyear: {
+					'user[password_confirmation]': {
 						validators: {
 							notEmpty: {
-								message: 'Credit card year is required'
-							}
-						}
-					},
-					cccvv: {
-						validators: {
-							notEmpty: {
-								message: 'Credit card CVV is required'
-							},
-							digits: {
-								message: 'The CVV value is not valid. Only numbers is allowed'
+								message: 'Password confirmation is required'
 							}
 						}
 					}
@@ -375,27 +294,23 @@ var KTLogin = function() {
 		});
 
 		// Validation before going to next page
-		wizardObj.on('beforeNext', function (wizard) {
-			validations[wizard.getStep() - 1].validate().then(function (status) {
+		$('[data-wizard-type="action-next-1"], #kt_login_signup_form_submit_button').click(function(e){
+			e.preventDefault();
+
+			$('[data-wizard-type="action-next-1"]').toggle(wizardObj.getStep() < 2)
+			validations[wizardObj.getStep() - 1].validate().then(function (status) {
 				if (status == 'Valid') {
+
+					if(wizardObj.getStep() == 3) {
+						form.submit()
+					}
+
 					wizardObj.goNext();
 					KTUtil.scrollTop();
 				} else {
-					Swal.fire({
-						text: "Sorry, looks like there are some errors detected, please try again.",
-						icon: "error",
-						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
-						customClass: {
-							confirmButton: "btn font-weight-bold btn-light-primary"
-						}
-					}).then(function () {
-						KTUtil.scrollTop();
-					});
+					KTUtil.scrollTop();
 				}
 			});
-
-			wizardObj.stop();  // Don't go to the next step
 		});
 
 		// Change event
@@ -407,10 +322,10 @@ var KTLogin = function() {
     // Public Functions
     return {
         init: function() {
-            _handleFormSignin();
-			_handleFormForgot();
-			_handleFormSignup();
-        }
+        	_handleFormSignin();
+				_handleFormForgot();
+				_handleFormSignup();
+      }
     };
 }();
 

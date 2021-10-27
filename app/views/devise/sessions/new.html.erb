@@ -38,7 +38,6 @@
         <!--begin::Form-->
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form', id: 'kt_login_singin_form' } ) do |f| %>
           <!--begin::Title-->
-          <%= render 'shared/flash' %>
           <div class="pb-5 pb-lg-15">
             <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h3>
             <div class="text-muted font-weight-bold font-size-h4">New Here?
@@ -46,6 +45,7 @@
             </div>
           </div>
           <!--begin::Title-->
+          <%= render 'shared/flash' %>
           <!--begin::Form group-->
           <div class="form-group">
             <label class="font-size-h6 font-weight-bolder text-dark">Your Email</label>
