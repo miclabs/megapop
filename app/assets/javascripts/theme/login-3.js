@@ -269,14 +269,22 @@ var KTLogin = function() {
 						validators: {
 							notEmpty: {
 								message: 'Password is required'
-							}
+							},
+							stringLength: {
+                  min: 6,
+                  message: 'Password is too short (minimum is 6 characters)',
+              },
 						}
 					},
 					'user[password_confirmation]': {
 						validators: {
 							notEmpty: {
 								message: 'Password confirmation is required'
-							}
+							},
+							stringLength: {
+                  min: 6,
+                  message: 'Password is too short (minimum is 6 characters)',
+              },
 						}
 					}
 				},
