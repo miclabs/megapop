@@ -130,6 +130,10 @@
     max-width: 650px;
   }
 }
+
+.has-danger .form-control {
+  border: 1px solid red !important;
+}
 @media (min-width: 992px) and (max-width: 1399.98px) {
   .login.login-3 .login-aside {
     width: 100%;

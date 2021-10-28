@@ -37,7 +37,7 @@
 				<!--begin::Forgot-->
 				<div class="login-form">
 					<!--begin::Form-->
-					<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+					<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'kt_login_forgot_form' }) do |f| %>
 						<!--begin::Title-->
 						<div class="pb-5 pb-lg-15">
 							<h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Forgotten Password ?</h3>

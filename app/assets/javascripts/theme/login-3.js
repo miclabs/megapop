@@ -130,7 +130,7 @@ var KTLogin = function() {
 		        form,
 		        {
 		            fields: {
-						email: {
+						'user[email]': {
 							validators: {
 								notEmpty: {
 									message: 'Email is required'
@@ -157,9 +157,11 @@ var KTLogin = function() {
 				KTUtil.btnWait(formSubmitButton, _buttonSpinnerClasses, "Please wait");
 
 				// Simulate Ajax request
-				setTimeout(function() {
-					KTUtil.btnRelease(formSubmitButton);
-				}, 2000);
+				// setTimeout(function() {
+				// 	KTUtil.btnRelease(formSubmitButton);
+				// }, 2000);
+
+				form.submit()
 		    })
 			.on('core.form.invalid', function() {
 				Swal.fire({
@@ -239,6 +241,41 @@ var KTLogin = function() {
 						validators: {
 							notEmpty: {
 								message: 'Last name is required'
+							}
+						}
+					},
+					'user[street_address_1]': {
+						validators: {
+							notEmpty: {
+								message: 'Address 1 is required'
+							}
+						}
+					},
+					'user[street_address_2]': {
+						validators: {
+							notEmpty: {
+								message: 'Address 2 is required'
+							}
+						}
+					},
+					'user[postcode]': {
+						validators: {
+							notEmpty: {
+								message: 'Postcode is required'
+							}
+						}
+					},
+					'user[city]': {
+						validators: {
+							notEmpty: {
+								message: 'City is required'
+							}
+						}
+					},
+					'user[state]': {
+						validators: {
+							notEmpty: {
+								message: 'State is required'
 							}
 						}
 					}
