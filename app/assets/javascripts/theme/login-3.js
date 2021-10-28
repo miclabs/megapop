@@ -309,9 +309,9 @@ var KTLogin = function() {
 		$('[data-wizard-type="action-next-1"], #kt_login_signup_form_submit_button').click(function(e){
 			e.preventDefault();
 
-			$('[data-wizard-type="action-next-1"]').toggle(wizardObj.getStep() < 2)
 			validations[wizardObj.getStep() - 1].validate().then(function (status) {
 				if (status == 'Valid') {
+					$('[data-wizard-type="action-next-1"]').toggle(wizardObj.getStep() < 2)
 
 					if(wizardObj.getStep() == 3) {
 						form.submit()
