@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates_presence_of :ssn, :zip_code, 
   	:phone_number, :first_name, :last_name, 
   	:street_address_1, :street_address_2, :postcode, :city, :state, on: :create
+
+  def full_name
+    first_name.to_s + " " + last_name.to_s
+  end
 end
