@@ -102,17 +102,17 @@ var KTLogin = function() {
 				**/
 		    })
 			.on('core.form.invalid', function() {
-				Swal.fire({
-					text: "Sorry, looks like there are some errors detected, please try again.",
-					icon: "error",
-					buttonsStyling: false,
-					confirmButtonText: "Ok, got it!",
-					customClass: {
-						confirmButton: "btn font-weight-bold btn-light-primary"
-					}
-				}).then(function() {
+				// Swal.fire({
+				// 	text: "Sorry, looks like there are some errors detected, please try again.",
+				// 	icon: "error",
+				// 	buttonsStyling: false,
+				// 	confirmButtonText: "Ok, got it!",
+				// 	customClass: {
+				// 		confirmButton: "btn font-weight-bold btn-light-primary"
+				// 	}
+				// }).then(function() {
 					KTUtil.scrollTop();
-				});
+				// });
 		    });
     }
 
@@ -164,17 +164,17 @@ var KTLogin = function() {
 				form.submit()
 		    })
 			.on('core.form.invalid', function() {
-				Swal.fire({
-					text: "Sorry, looks like there are some errors detected, please try again.",
-					icon: "error",
-					buttonsStyling: false,
-					confirmButtonText: "Ok, got it!",
-					customClass: {
-						confirmButton: "btn font-weight-bold btn-light-primary"
-					}
-				}).then(function() {
+				// Swal.fire({
+				// 	text: "Sorry, looks like there are some errors detected, please try again.",
+				// 	icon: "error",
+				// 	buttonsStyling: false,
+				// 	confirmButtonText: "Ok, got it!",
+				// 	customClass: {
+				// 		confirmButton: "btn font-weight-bold btn-light-primary"
+				// 	}
+				// }).then(function() {
 					KTUtil.scrollTop();
-				});
+				// });
 		    });
     }
 
@@ -188,6 +188,8 @@ var KTLogin = function() {
 		if (!form) {
 			return;
 		}
+
+		$('.select2').select2()
 
 		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
 		// Step 1
