@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Megapop</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= favicon_link_tag asset_path('favicon.svg') %>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= render 'layouts/head' %>
 
   <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+    <%= toastr_flash %>
 		<!--begin::Header Mobile-->
 		<%= render "shared/mobile_header" %>
 		<!--end::Header Mobile-->

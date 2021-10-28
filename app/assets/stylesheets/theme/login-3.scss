@@ -130,6 +130,22 @@
     max-width: 650px;
   }
 }
+
+.has-danger .form-control {
+  border: 1px solid red !important;
+}
+
+span.select2-selection.select2-selection--single {
+  height: 62px;
+  background: white;
+  border-color: none !important;
+}
+
+.select2 {
+  background: none;
+  display: block !important;
+}
+
 @media (min-width: 992px) and (max-width: 1399.98px) {
   .login.login-3 .login-aside {
     width: 100%;

@@ -328,7 +328,9 @@ if ( true && typeof module.exports !== 'undefined') {
 
 // Initialize KTApp class on document ready
 $(document).ready(function() {
-    KTApp.init(KTAppSettings);
+    if (typeof KTAppSettings !== 'undefined') {
+        KTApp.init(KTAppSettings);
+    }
 });
 
 // CSS3 Transitions only after page load(.page-loading class added to body tag and remove with JS on page load)

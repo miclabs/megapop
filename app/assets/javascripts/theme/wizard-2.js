@@ -329,8 +329,10 @@ var KTWizard2 = function () {
 			_wizardEl = KTUtil.getById('kt_wizard');
 			_formEl = KTUtil.getById('kt_form');
 
-			_initWizard();
-			_initValidation();
+			if(_wizardEl){
+				_initWizard();
+				_initValidation();
+			}
 		}
 	};
 }();
