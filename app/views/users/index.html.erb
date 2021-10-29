@@ -1,15 +1,15 @@
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+<div class="content d-flex flex-column flex-column-fluid users" id="kt_content">
   <div class="d-flex flex-column-fluid">
     <div class="container">
       <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
           <div class="card-title">
-            <h3 class="card-label">User Listing
+            <h3 class="card-label"><%= params[:role].present? ? "#{user_roles[params[:role].to_sym]}s" : 'User Listing' %>
             <span class="d-block text-muted pt-2 font-size-sm">User listing &amp; management</span></h3>
           </div>
           <div class="card-toolbar">
 
-            <a href="#" class="btn btn-primary font-weight-bolder">
+            <a href="<%= new_user_path %>" class="btn btn-primary font-weight-bolder">
             <span class="svg-icon svg-icon-md">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -22,7 +22,48 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+          <table class="table  table-separate table-head-custom table-checkable" id="kt_datatable">
+            <thead>
+              <tr>
+                <th width='100px'>Avatar</th>
+                <th>Full name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Created at</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><div class='symbol symbol-40 symbol-sm flex-shrink-0'><%= image_tag user_avatar(user) %></div></td>
+                  <td><%= user.full_name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.city %></td>
+                  <td><%=us_states.to_h.invert[user.state] %></td>
+                  <td><%= user_roles[user.role.to_sym] %></td>
+                  <td><%= raw(user.status ? '<span class="fa fa-check">' : '') %></td>
+                  <td><%= user.created_at.strftime('%d/%m/%y %T') %></td>
+                  <td width='200px'>
+                    <%= link_to user, class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
+                      <i class='fa fa-eye'></i>
+                    <% end %>  
+
+                    <%= link_to [:edit, user], class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
+                      <i class='fa fa-edit'></i>
+                    <% end %>  
+
+                    <%= link_to user, data: { method: :delete, confirm: 'Are you sure?'}, class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
+                      <i class='fa fa-trash'></i>
+                    <% end %>  
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

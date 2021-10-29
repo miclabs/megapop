@@ -1,0 +1,24 @@
+span.select2-selection.select2-selection--single { 
+  border: none !important;
+  background-color: #F3F6F9;
+  border-color: #F3F6F9;
+  height: 44.5px;
+}
+
+#kt_content {
+  .checkbox-inline {
+    margin-top: 10px;
+  }
+}
+
+.users {
+  .table {
+    td.datatable-cell:first-child span, th.datatable-cell:first-child span {
+      width: 62px!important;
+    }
+
+    td.datatable-cell:last-child span, th.datatable-cell:last-child span {
+      width: 137px !important;
+    }
+  }
+}
