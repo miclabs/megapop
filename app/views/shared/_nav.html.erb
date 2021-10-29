@@ -85,7 +85,7 @@
       <!--begin::Nav-->
       <div class="subheader-nav nav flex-grow-1">
         <!--begin::Item-->
-        <a href="#" class="nav-item active">
+        <a href="#" class="nav-item ">
         <span class="nav-label px-10">
         <span class="nav-title text-dark-75 font-weight-bold font-size-h4">New Payment</span>
         <span class="nav-desc text-muted">Payment Requests</span>
@@ -117,7 +117,7 @@
         </a>
         <!--end::Item-->
         <!--begin::Item-->
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item <%= controller_name == 'registrations' ? 'active' : '' %>">
         <span class="nav-label px-10">
         <span class="nav-title text-dark-75 font-weight-bold font-size-h4">My Account</span>
         <span class="nav-desc text-muted">Profile & Account</span>
