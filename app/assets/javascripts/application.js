@@ -17,3 +17,4 @@
 //= require jquery_ujs
 //= require popper
 //= require custom
+//require theme/list-datatable
