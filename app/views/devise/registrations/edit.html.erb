@@ -3,7 +3,10 @@
     <div class="d-flex flex-row">
       <%= render 'devise/registrations/sidebar' %>
       <div class="flex-row-fluid ml-lg-8">
-        <%= render "devise/registrations/#{params[:tab] || 'account' }" %>
+      	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      		<%= render "devise/shared/error_messages", resource: resource %>
+        	<%= render "devise/registrations/#{params[:tab] || 'account' }", f: f %>
+        <% end %>
       </div>
     </div>
   </div>
