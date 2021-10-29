@@ -4,7 +4,7 @@ module AccountsHelper
   end
 
   def user_avatar user
-  	if user && user.avatar.present?
+    if user && user.avatar.present?
       url_for(user.avatar)
     else
       asset_path('media/users/blank.png')
