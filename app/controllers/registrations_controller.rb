@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  layout 'application'
+  
 	def update_resource(resource, params)
     # Require current password if user is trying to change password.
     # return super if params["password"]&.present?
