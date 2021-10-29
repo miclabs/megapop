@@ -1,7 +1,7 @@
 module AccountsHelper
   def current_user_avatar
     if current_user && current_user.avatar.present?
-      user.avatar.variant(:thumb)
+      url_for(current_user.avatar)
     else
       asset_path('media/users/blank.png')
     end
