@@ -1,6 +1,6 @@
 <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
   <div class="card card-custom gutter-b">
-    <div class="card-body pt-4">
+    <div class="card-body pt-8">
       <div class="d-flex align-items-center">
         <div class="symbol symbol-60 symbol-xxl-90 mr-5 align-self-start align-self-xxl-center">
           <div class="symbol-label" style="background-image:url('<%= current_user_avatar %>')"></div>
@@ -8,7 +8,7 @@
         </div>
         <div>
           <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary"><%= current_user.full_name %></a>
-          <div class="text-muted"><%= current_user.role.upcase %></div>
+          <div class="text-muted"><%= current_user.role.titleize %></div>
           <div class="mt-2">
             <a href="#" class="btn btn-icon btn-sm btn-default btn-hover-light-primary mr-1">
               <span class="svg-icon svg-icon-md">
@@ -137,7 +137,7 @@
                 </svg>
               </span>
             </span>
-            <span class="navi-text font-size-lg">Change Passwort</span>
+            <span class="navi-text font-size-lg">Change Password</span>
           </a>
         </div>
       </div>
