@@ -90,7 +90,7 @@
       <div class="navi navi-bold navi-hover navi-active navi-link-rounded">
 
         <div class="navi-item mb-2">
-          <a href="<%= edit_user_registration_path %>" class="navi-link py-4 <%= 'active' unless params[:tab].present? %>">
+          <a href="<%= user_account_path(tab: :personal) %>" class="navi-link py-4 <%= 'active' if params[:tab] == 'personal' %>">
             <span class="navi-icon mr-2">
               <span class="svg-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -107,7 +107,7 @@
         </div>
 
         <div class="navi-item mb-2">
-          <a href="<%= edit_user_registration_path(tab: 'address') %>" class="navi-link py-4  <%= 'active' if params[:tab].== 'address' %>">
+          <a href="<%= user_account_path(tab: 'address') %>" class="navi-link py-4  <%= 'active' if params[:tab] == 'address' %>">
             <span class="navi-icon mr-2">
               <span class="svg-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -124,7 +124,7 @@
         </div>
 
         <div class="navi-item mb-2">
-          <a href="<%= edit_user_registration_path(tab: 'password') %>" class="navi-link py-4 <%= 'active' if params[:tab].== 'password' %>">
+          <a href="<%= user_account_path(tab: 'password') %>" class="navi-link py-4 <%= 'active' if params[:tab] == 'password' %>">
             <span class="navi-icon mr-2">
               <span class="svg-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
