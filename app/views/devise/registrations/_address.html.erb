@@ -1,0 +1,44 @@
+<div class="card card-custom">
+  <div class="card-header py-3">
+    <div class="card-title align-items-start flex-column">
+      <h3 class="card-label font-weight-bolder text-dark">Address Information</h3>
+      <span class="text-muted font-weight-bold font-size-sm mt-1">Change your Address Information</span>
+    </div>
+    <div class="card-toolbar">
+      <button type="submit" class="btn btn-primary font-weight-bolder mr-2">Save Changes</button>
+      <button type="reset" class="btn btn-light-primary font-weight-bolder">Cancel</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label text-alert">Address 1</label>
+      <div class="col-lg-9 col-xl-6">
+        <%= f.text_field :street_address_1, class: 'form-control form-control-lg form-control-solid mb-2' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label text-alert">Address 2</label>
+      <div class="col-lg-9 col-xl-6">
+        <%= f.text_field :street_address_2, class: 'form-control form-control-lg form-control-solid mb-2' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label text-alert">City</label>
+      <div class="col-lg-9 col-xl-6">
+        <%= f.text_field :city, class: 'form-control form-control-lg form-control-solid mb-2' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label text-alert">State</label>
+      <div class="col-lg-9 col-xl-6">
+        <%= f.select :state, options_for_select(us_states, f.object.state), {}, class: 'form-control form-control-lg form-control-solid mb-2 select2' %>  
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label text-alert">Zip</label>
+      <div class="col-lg-9 col-xl-6">
+        <%= f.text_field :zip_code, class: 'form-control form-control-lg form-control-solid mb-2' %>
+      </div>
+    </div>
+  </div>
+</div>
