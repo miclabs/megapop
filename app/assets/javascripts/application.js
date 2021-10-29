@@ -16,3 +16,4 @@
 //= require theme/wizard-2
 //= require jquery_ujs
 //= require popper
+//= require custom

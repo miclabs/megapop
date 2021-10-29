@@ -13,42 +13,31 @@
     <div class="form-group row">
       <label class="col-xl-3 col-lg-3 col-form-label text-alert">Address 1</label>
       <div class="col-lg-9 col-xl-6">
-        <input type="text" class="form-control form-control-lg form-control-solid mb-2" value="" placeholder="" />
+        <%= f.text_field :street_address_1, class: 'form-control form-control-lg form-control-solid mb-2' %>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-xl-3 col-lg-3 col-form-label text-alert">Address 2</label>
       <div class="col-lg-9 col-xl-6">
-        <input type="text" class="form-control form-control-lg form-control-solid" value="" placeholder="" />
+        <%= f.text_field :street_address_2, class: 'form-control form-control-lg form-control-solid mb-2' %>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-xl-3 col-lg-3 col-form-label text-alert">City</label>
       <div class="col-lg-9 col-xl-6">
-        <input type="text" class="form-control form-control-lg form-control-solid" value="" placeholder="" />
+        <%= f.text_field :city, class: 'form-control form-control-lg form-control-solid mb-2' %>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-xl-3 col-lg-3 col-form-label text-alert">State</label>
       <div class="col-lg-9 col-xl-6">
-        <select class="form-control form-control-lg form-control-solid custom-select" id="">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%= f.select :state, options_for_select(us_states, f.object.state), {}, class: 'form-control form-control-lg form-control-solid mb-2 select2' %>  
       </div>
     </div>
     <div class="form-group row">
       <label class="col-xl-3 col-lg-3 col-form-label text-alert">Zip</label>
       <div class="col-lg-9 col-xl-6">
-        <input type="text" class="form-control form-control-lg form-control-solid" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-xl-3 col-lg-3 col-form-label text-alert">Country</label>
-      <div class="col-lg-9 col-xl-6">
-        <input type="text" class="form-control form-control-lg form-control-solid" value="" placeholder="" />
+        <%= f.text_field :zip_code, class: 'form-control form-control-lg form-control-solid mb-2' %>
       </div>
     </div>
   </div>

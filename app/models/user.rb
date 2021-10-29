@@ -18,4 +18,10 @@ class User < ApplicationRecord
   def full_name
     first_name.to_s + " " + last_name.to_s
   end
+
+  def update_without_password(params, *options)
+    result = update(params, *options)
+    clean_up_passwords
+    result
+  end
 end

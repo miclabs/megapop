@@ -189,8 +189,6 @@ var KTLogin = function() {
 			return;
 		}
 
-		$('.select2').select2()
-
 		// Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
 		// Step 1
 		validations.push(FormValidation.formValidation(
