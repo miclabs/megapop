@@ -61152,36 +61152,36 @@ code {
   transition: color 0.3s ease;
   color: #0BB783;
 }
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-head .datatable-row,
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-body .datatable-row,
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-foot .datatable-row {
+.datatable.datatable-default > .datatable-table > .datatable-head .datatable-row,
+.datatable.datatable-default > .datatable-table > .datatable-body .datatable-row,
+.datatable.datatable-default > .datatable-table > .datatable-foot .datatable-row {
   border-bottom: 1px solid #EBEDF3;
 }
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-head .datatable-row.datatable-row-subtable-expanded,
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-body .datatable-row.datatable-row-subtable-expanded,
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-foot .datatable-row.datatable-row-subtable-expanded {
+.datatable.datatable-default > .datatable-table > .datatable-head .datatable-row.datatable-row-subtable-expanded,
+.datatable.datatable-default > .datatable-table > .datatable-body .datatable-row.datatable-row-subtable-expanded,
+.datatable.datatable-default > .datatable-table > .datatable-foot .datatable-row.datatable-row-subtable-expanded {
   border-bottom: 0;
 }
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-body .datatable-row:last-child {
+.datatable.datatable-default > .datatable-table > .datatable-body .datatable-row:last-child {
   border-bottom: 0;
 }
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-body tr:last-of-type {
+.datatable.datatable-default > .datatable-table > .datatable-body tr:last-of-type {
   border-bottom: 0;
 }
-.datatable.datatable-default.datatable-bordered > .datatable-table > .datatable-body .datatable-row-detail .datatable-detail table {
+.datatable.datatable-default > .datatable-table > .datatable-body .datatable-row-detail .datatable-detail table {
   border-left: 1px solid #EBEDF3;
   border-right: 1px solid #EBEDF3;
 }
-.datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-head .datatable-row > .datatable-cell > span,
-.datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-foot .datatable-row > .datatable-cell > span {
+.datatable.datatable-default > .datatable-table > .datatable-head .datatable-row > .datatable-cell > span,
+.datatable.datatable-default > .datatable-table > .datatable-foot .datatable-row > .datatable-cell > span {
   color: #B5B5C3;
   font-size: 0.9rem;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.1rem;
 }
-.datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-head .datatable-row > .datatable-cell.datatable-cell-sorted > span,
-.datatable.datatable-default.datatable-head-custom > .datatable-table > .datatable-foot .datatable-row > .datatable-cell.datatable-cell-sorted > span {
+.datatable.datatable-default > .datatable-table > .datatable-head .datatable-row > .datatable-cell.datatable-cell-sorted > span,
+.datatable.datatable-default > .datatable-table > .datatable-foot .datatable-row > .datatable-cell.datatable-cell-sorted > span {
   color: #0BB783;
 }
 .datatable.datatable-default.datatable-head-bg > .datatable-table > .datatable-head .datatable-row {
