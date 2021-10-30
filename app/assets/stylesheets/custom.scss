@@ -32,4 +32,8 @@ span.select2-selection.select2-selection--single {
       font-size: 1rem;
     }
   }
+
+  th.sorting:last-child::after, th.sorting:last-child::before {
+    display: none !important;
+  }
 }
