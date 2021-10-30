@@ -12,48 +12,48 @@ var KTAppsUsersListDatatable = function() {
 
 	// basic demo
 	var _demo = function() {
-		var datatable = $('#kt_datatable').KTDatatable({
-			// datasource definition
-			data: {
-				type: 'local',
-				// source: {
-				// 	read: {
-				// 		url: 'https://preview.keenthemes.com/keen/theme/tools/preview' + '/api/datatables/demos/default.php',
-				// 	},
-				// },
-				pageSize: 10, // display 20 records per page
-				// serverPaging: true,
-				// serverFiltering: true,
-				// serverSorting: true,
-			},
-
-			// layout definition
-			layout: {
-				scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
-				footer: false, // display/hide footer
-			},
-
-			// column sorting
-			sortable: true,
-
-			pagination: true,
-
-			// search: {
-			// 	input: $('#kt_subheader_search_form'),
-			// 	delay: 400,
-			// 	key: 'generalSearch'
-			// },
+		$('#kt_datatable').DataTable({
+			responsive: true,
+			paging: true
 		});
+		// var datatable = $('#kt_datatable').KTDatatable({
+		// 	// datasource definition
+		// 	data: {
+		// 		type: 'local',
+		// 		// source: {
+		// 		// 	read: {
+		// 		// 		url: 'https://preview.keenthemes.com/keen/theme/tools/preview' + '/api/datatables/demos/default.php',
+		// 		// 	},
+		// 		// },
+		// 		pageSize: 10, // display 20 records per page
+		// 		// serverPaging: true,
+		// 		// serverFiltering: true,
+		// 		// serverSorting: true,
+		// 	},
 
-		$('#kt_datatable_search_status').on('change', function() {
-			datatable.search($(this).val().toLowerCase(), 'Status');
-		});
+		// 	// layout definition
+		// 	layout: {
+		// 		scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
+		// 		footer: false, // display/hide footer
+		// 	},
 
-		$('#kt_datatable_search_type').on('change', function() {
-			datatable.search($(this).val().toLowerCase(), 'Type');
-		});
+		// 	// column sorting
+		// 	sortable: true,
 
-		$('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+		// 	pagination: true,
+
+		// 	search: true
+		// });
+
+		// $('#kt_datatable_search_status').on('change', function() {
+		// 	datatable.search($(this).val().toLowerCase(), 'Status');
+		// });
+
+		// $('#kt_datatable_search_type').on('change', function() {
+		// 	datatable.search($(this).val().toLowerCase(), 'Type');
+		// });
+
+		// $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
 	};
 
 	return {
