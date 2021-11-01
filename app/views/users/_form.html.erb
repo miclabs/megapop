@@ -39,7 +39,7 @@
 				<!--end::Card header-->
 				<!--begin::Card body-->
 				<div class="card-body">
-					<%= form_for @user do |f| %>
+					<%= form_for @user, html: { id: 'user-form' } do |f| %>
 						<div class="tab-content">
 							<!--begin::Tab-->
 							<div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">

@@ -57,7 +57,7 @@ var KTAppsUsersListDatatable = function() {
 	};
 
 	var _handleForm = function() {
-		var form = KTUtil.getById('kt_user_edit_tab_1');
+		var form = KTUtil.getById('user-form');
 		var validations;
 
 		if (!form) {
