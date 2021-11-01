@@ -176,8 +176,7 @@ var KTAppsUsersListDatatable = function() {
 			return;
 		}
 
-		if(action_class == 'user-new') {
-			console.log(action_class)
+		if(action_class.includes('new_user')) {
 			validations = FormValidation.formValidation(
 				form, {
 					fields: new_fields,
@@ -199,11 +198,9 @@ var KTAppsUsersListDatatable = function() {
 				}
 			);
 		}
-		// console.log(validation);
 		// Validation before submit
 		$('#kt_user_submit_button').click(function(e){
 			e.preventDefault();
-			// console.log('validations', validations)
 			validations.validate().then(function (status) {
 				if (status == 'Valid') {
 
