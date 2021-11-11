@@ -14,6 +14,8 @@
 //= require theme/login-3
 //= require theme/profile
 //= require theme/wizard-2
+//= require theme/list-datatable
+//= require theme/datatables.bundle
 //= require jquery_ujs
 //= require popper
 //= require custom

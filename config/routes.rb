@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :user, :controllers => {:registrations => "registrations"}
   as :user do
   	get '/account/:tab' => 'registrations#edit', as: :user_account
   end
@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   root to: "accounts#index"
 
   resources :accounts
+  resources :users
 end
