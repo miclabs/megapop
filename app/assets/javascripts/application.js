@@ -19,3 +19,4 @@
 //= require jquery_ujs
 //= require popper
 //= require custom
+//= require cocoon
