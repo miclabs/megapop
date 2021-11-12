@@ -6,7 +6,16 @@ class RateCard < ApplicationRecord
 
   enum card_type: { interest_rate: 0, extension_rate: 1 }
 
-  validates :name, :rates, presence: true
-
   accepts_nested_attributes_for :rates, reject_if: :all_blank, allow_destroy: true
+
+  validates :name, :rates, presence: true
+  validate :unique_primary
+
+  scope :primary, -> { where(primary: true) }
+
+  def unique_primary
+  	if primary? && self.class.send(card_type).primary.where.not(id: id).any?
+  		self.errors.add(:primary, 'already exists')
+  	end
+  end
 end

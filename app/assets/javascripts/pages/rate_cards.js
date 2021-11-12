@@ -42,7 +42,7 @@ $(document).ready(function(){
                 }
               }
             },
-            'rate_card[rates_attributes][2][days]': {
+            'rate_card[rates_attributes][1][days]': {
               validators: {
                 notEmpty: {
                   message: 'Day is required'
