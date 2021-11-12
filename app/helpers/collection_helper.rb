@@ -1,5 +1,5 @@
 module CollectionHelper
-	 def user_roles
+   def user_roles
     {
       creator: 'Creator',
       credit_manager: 'Credit Manager',

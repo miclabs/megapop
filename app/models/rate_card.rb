@@ -14,8 +14,8 @@ class RateCard < ApplicationRecord
   scope :primary, -> { where(primary: true) }
 
   def unique_primary
-  	if primary? && self.class.send(card_type).primary.where.not(id: id).any?
-  		self.errors.add(:primary, 'already exists')
-  	end
+    if primary? && self.class.send(card_type).primary.where.not(id: id).any?
+      self.errors.add(:primary, 'already exists')
+    end
   end
 end
