@@ -2,7 +2,7 @@
 <html>
   <%= render 'layouts/head' %>
 
-  <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
+  <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading <%= page_class %>">
     <%= toastr_flash %>
 		<!--begin::Header Mobile-->
 		<%= render "shared/mobile_header" %>

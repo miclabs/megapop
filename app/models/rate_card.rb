@@ -1,5 +1,7 @@
 class RateCard < ApplicationRecord
-  belongs_to :user
+  belongs_to :created_by, class_name: 'User', foreign_key: :created_by_id
+  belongs_to :updated_by, class_name: 'User', foreign_key: :updated_by_id, required: false
+
   has_many :rates
 
   enum card_type: { interest_rate: 0, extension_rate: 1 }
