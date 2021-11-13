@@ -74,12 +74,7 @@ $(document).ready(function(){
 
       $('#add-btn').click(function(){
         $('.links a').trigger('click');
-        $('#add-btn').toggle($('.nested-fields:not(:hidden)').length < 3)
         return false;
-      })
-
-      $('.remove_fields').click(function(){
-        $('#add-btn').toggle($('.nested-fields:not(:hidden)').length < 3)
       })
     }
   }

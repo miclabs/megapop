@@ -27,9 +27,11 @@
             <thead>
               <tr>
                 <th>Rate Card Name</th>
+                <th>Rate Offers</th>
                 <th>Primary</th>
                 <th>Created By</th>
-                <th>Created At</th>
+                <th>Created On</th>
+                <th>Updated By</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -44,14 +46,18 @@
                     </div>
                   </td>
                   <td>
+                    <%= rate_card.rates.count %>
+                  </td>
+                  <td>
                     <% if rate_card.primary? %>
                       <label class="label label-lg font-weight-bold label-light-primary label-inline">Yes</label>
                     <% else %>
                       <label class="label label-lg font-weight-bold label-light-danger label-inline">No</label>
                     <% end %>
                   </td>
-                  <td><%= rate_card.created_by&.full_name %></td>
+                  <td><%= link_to(rate_card.created_by&.full_name, rate_card.created_by) if rate_card.created_by.present? %></td>
                   <td><%= rate_card.created_at.strftime('%d/%m/%y') %></td>
+                  <td><%= link_to(rate_card.updated_by&.full_name, rate_card.updated_by) if rate_card.updated_by.present? %></td>
                   <td width='200px'>
                     <%= link_to rate_card, class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
                       <i class='fa fa-eye'></i>
