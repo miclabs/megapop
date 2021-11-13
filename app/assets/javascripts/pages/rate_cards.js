@@ -11,12 +11,19 @@ $(document).ready(function(){
         validators = validateForm(form)
         return false;
       })
+
+      $(document).on('click', '.remove_fields', function(){
+        setTimeout(function(){
+          validators.destroy();
+          validators = validateForm(form)
+        }, 200)
+      })  
     }
   }
 
   function validateForm(form){
     var fields = {}
-    $(form).find('input.required').each(function(i, e){
+    $(form).find('input.required:not(:hidden)').each(function(i, e){
       fields[$(e).attr('name')] = {
         validators: {
           notEmpty: {
