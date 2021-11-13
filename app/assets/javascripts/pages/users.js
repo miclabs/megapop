@@ -1,21 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 var __webpack_exports__ = {};
-/*!***********************************************************!*\
-  !*** ../demo3/src/js/pages/custom/user/list-datatable.js ***!
-  \***********************************************************/
-
-// Class definition
-
 var KTAppsUsersListDatatable = function() {
-	// basic demo
-	var _demo = function() {
-		$('#kt_datatable').DataTable({
-			responsive: true,
-			paging: true
-		});
-	};
-
 	var _handleForm = function() {
 		var form = KTUtil.getById('user-form');
 		var action_class = document.getElementById('user-form').className;
@@ -176,7 +162,6 @@ var KTAppsUsersListDatatable = function() {
 	return {
 		// public functions
 		init: function() {
-			_demo();
 			_handleForm();
 		},
 	};
