@@ -3,80 +3,47 @@ $(document).ready(function(){
     var form = KTUtil.getById('rate-card-form')
 
     if(form) {  
-      FormValidation.formValidation(
-        form,
-        {
-          fields: {
-            'rate_card[name]': {
-              validators: {
-                notEmpty: {
-                  message: 'Name is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][0][rate]': {
-              validators: {
-                notEmpty: {
-                  message: 'Rate is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][1][rate]': {
-              validators: {
-                notEmpty: {
-                  message: 'Rate is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][2][rate]': {
-              validators: {
-                notEmpty: {
-                  message: 'Rate is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][0][days]': {
-              validators: {
-                notEmpty: {
-                  message: 'Day is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][1][days]': {
-              validators: {
-                notEmpty: {
-                  message: 'Day is required'
-                }
-              }
-            },
-            'rate_card[rates_attributes][2][days]': {
-              validators: {
-                notEmpty: {
-                  message: 'Day is required'
-                }
-              }
-            }
-          },
-          plugins: {
-            trigger: new FormValidation.plugins.Trigger(),
-            submitButton: new FormValidation.plugins.SubmitButton(),
-            bootstrap: new FormValidation.plugins.Bootstrap({
-            })
-          }
-        }
-      )
-      .on('core.form.valid', function() {
-        form.submit();
-      })
-      .on('core.form.invalid', function() {
-        KTUtil.scrollTop();
-      });
+      var validators = validateForm(form)
 
       $('#add-btn').click(function(){
         $('.links a').trigger('click');
+        validators.destroy();
+        validators = validateForm(form)
         return false;
       })
     }
+  }
+
+  function validateForm(form){
+    var fields = {}
+    $(form).find('input.required').each(function(i, e){
+      fields[$(e).attr('name')] = {
+        validators: {
+          notEmpty: {
+            message: 'Field is required'
+          }
+        }
+      }
+    })
+
+    return FormValidation.formValidation(
+      form,
+      {
+        fields: fields,
+        plugins: {
+          trigger: new FormValidation.plugins.Trigger(),
+          submitButton: new FormValidation.plugins.SubmitButton(),
+          bootstrap: new FormValidation.plugins.Bootstrap({
+          })
+        }
+      }
+    )
+    .on('core.form.valid', function() {
+      form.submit();
+    })
+    .on('core.form.invalid', function() {
+      KTUtil.scrollTop();
+    });
   }
 })
         
