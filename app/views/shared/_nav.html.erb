@@ -31,9 +31,28 @@
                       <% end %>
                     </ul>
                   </div>
-              </li>
-            <% end %>
-          </ul>
+                </li>
+
+                <li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here <%= controller_name == 'rate_cards' ? ' menu-item-active' : ''%>" data-menu-toggle="click" aria-haspopup="true">
+                  <a href="javascript:;" class="menu-link menu-toggle">
+                    <span class="menu-text">Finance</span>
+                    <span class="menu-desc"></span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                    <ul class="menu-subnav">
+                      <% rate_card_types.each do |type, label| %>
+                        <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
+                          <a href="<%= rate_cards_path(card_type: type) %>" class="menu-link">
+                            <span class="menu-text"><%= label %>s</span>
+                          </a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
           <!--end::Header Nav-->
         </div>
         <!--end::Header Menu-->
@@ -148,7 +167,7 @@
     </div>
   </div>
   <!--end::Subheader-->
-<!-- begin::User Panel--> 
+<!-- begin::User Panel-->
 <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
   <%= render 'shared/profile'%>
 </div>

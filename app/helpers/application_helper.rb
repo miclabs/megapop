@@ -1,9 +1,5 @@
 module ApplicationHelper
-  def user_roles
-    {
-      creator: 'Creator', 
-      credit_manager: 'Credit Manager', 
-      admin: 'Administrator'
-    }
+  def page_class
+    "#{controller_name} #{action_name}"
   end
 end

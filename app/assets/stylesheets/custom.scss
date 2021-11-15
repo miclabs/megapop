@@ -37,3 +37,7 @@ span.select2-selection.select2-selection--single {
     display: none !important;
   }
 }
+
+.nested-fields:first-child .remove_fields {
+  display: none;
+}
