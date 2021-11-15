@@ -1,7 +1,6 @@
 $(document).ready(function(){
   if($('body.rate_cards').length){
     var form = KTUtil.getById('rate-card-form')
-    var check = document.getElementById('rate_card_primary')
 
     if(form) {
       var validators = validateForm(form)
@@ -20,10 +19,13 @@ $(document).ready(function(){
         }, 200)
       })
 
-      $('.primary-exists').on('click', function(){
-        showConfirm(rate_card_primary)
+      $('.primary-exists').on('change', function(){
+        $this = $(this);
+        if($this.prop('checked')) {
+          confirmed = confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
+          $this.prop('checked', confirmed)
+        }
       })
-
     }
   }
 
@@ -57,18 +59,6 @@ $(document).ready(function(){
     .on('core.form.invalid', function() {
       KTUtil.scrollTop();
     });
-  }
-
-  function showConfirm(check) {
-    if (check.checked == false) {
-      return false;
-    } else {
-     var box = confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
-      if (box == true)
-        return true;
-      else
-        check.checked = true;
-    }
   }
 })
 
