@@ -12,7 +12,6 @@ class RateCardsController < ApplicationController
 
   def update
     if @rate_card.update(rate_card_params.merge(updated_by_id: current_user.id))
-      @rate_card.update_primary
       redirect_to rate_cards_path(card_type: @rate_card.card_type), notice: 'Updated successfully'
     else
       flash[:error] = @rate_card.errors.full_messages.to_sentence

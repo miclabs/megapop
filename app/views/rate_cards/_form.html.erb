@@ -60,7 +60,7 @@
                 <div class="col-3">
                   <span class="switch switch-primary">
                     <label>
-                     <%= f.check_box :primary, class: RateCard.send(@rate_card.card_type).primary.where.not(id: @rate_card.id).any? ? 'primary-exists' : '' %>
+                     <%= f.check_box :primary, class: is_primary? ? 'primary-exists' : '' %>
                       <span></span>
                     </label>
                     <label class="text-right ml-4">Primary</label>

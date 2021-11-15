@@ -21,7 +21,7 @@ $(document).ready(function(){
       })
 
       $('.primary-exists').on('click', function(){
-        show_confirm(rate_card_primary)
+        showConfirm(rate_card_primary)
       })
 
     }
@@ -59,15 +59,15 @@ $(document).ready(function(){
     });
   }
 
-  function show_confirm(check) {
+  function showConfirm(check) {
     if (check.checked == false) {
       return false;
     } else {
-     var box= confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
-      if (box==true)
-          return true;
+     var box = confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
+      if (box == true)
+        return true;
       else
-         check.checked = true;
+        check.checked = true;
     }
   }
 })

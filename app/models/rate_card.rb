@@ -12,7 +12,11 @@ class RateCard < ApplicationRecord
 
   scope :primary, -> { where(primary: true) }
 
+  before_commit :update_primary
+
   def update_primary
-    self.class.send(self.card_type).primary.where.not(id: id).update(primary: false)
+    if primary?
+      self.class.send(self.card_type).primary.where.not(id: id).update(primary: false)
+    end
   end
 end
