@@ -1,8 +1,9 @@
 $(document).ready(function(){
   if($('body.rate_cards').length){
     var form = KTUtil.getById('rate-card-form')
+    var check = document.getElementById('rate_card_primary')
 
-    if(form) {  
+    if(form) {
       var validators = validateForm(form)
 
       $('#add-btn').click(function(){
@@ -17,7 +18,12 @@ $(document).ready(function(){
           validators.destroy();
           validators = validateForm(form)
         }, 200)
-      })  
+      })
+
+      $('.primary-exists').on('click', function(){
+        show_confirm(rate_card_primary)
+      })
+
     }
   }
 
@@ -52,5 +58,17 @@ $(document).ready(function(){
       KTUtil.scrollTop();
     });
   }
+
+  function show_confirm(check) {
+    if (check.checked == false) {
+      return false;
+    } else {
+     var box= confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
+      if (box==true)
+          return true;
+      else
+         check.checked = true;
+    }
+  }
 })
-        
+

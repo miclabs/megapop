@@ -59,11 +59,11 @@
                 <label class="col-lg-2 col-form-label text-lg-right"></label>
                 <div class="col-3">
                   <span class="switch switch-primary">
-                  <label>
-                    <%= f.check_box :primary, disabled: RateCard.send(@rate_card.card_type).primary.where.not(id: @rate_card.id).any? %>
-                    <span></span>
-                  </label>
-                  <label class="text-right ml-4">Primary</label>
+                    <label>
+                     <%= f.check_box :primary, class: RateCard.send(@rate_card.card_type).primary.where.not(id: @rate_card.id).any? ? 'primary-exists' : '' %>
+                      <span></span>
+                    </label>
+                    <label class="text-right ml-4">Primary</label>
                   </span>
                 </div>
               </div>
@@ -73,8 +73,7 @@
               <div class="form-group row">
                 <label class="col-xl-3 col-lg-3 col-form-label text-right"></label>
                 <div class="col-lg-9 col-xl-9 text-right">
-                  <button type="submit" class="btn btn-success font-weight-bolder px-10 py-3" id="kt_card_user_submit_button">	Submit
-                  </button>
+                    <%= f.submit "Submit", class: "btn btn-success font-weight-bolder px-10 py-3" %>
                 </div>
               </div>
             </div>
