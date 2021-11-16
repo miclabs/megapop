@@ -7,6 +7,8 @@ $(document).ready(function(){
 
       $('#add-btn').click(function(){
         $('.links a').trigger('click');
+        initSelectRateRisk('credit_tier')
+        initSelectRateRisk('eleigible_for_offer')
         validators.destroy();
         validators = validateForm(form)
         return false;
@@ -26,6 +28,9 @@ $(document).ready(function(){
           $this.prop('checked', confirmed)
         }
       })
+
+      initSelectRateRisk('credit_tier')
+      initSelectRateRisk('eleigible_for_offer')
     }
   }
 
@@ -58,6 +63,13 @@ $(document).ready(function(){
     })
     .on('core.form.invalid', function() {
       KTUtil.scrollTop();
+    });
+  }
+
+  function initSelectRateRisk(field){
+    $(`select[name*=${field}]`).select2({
+      placeholder: (field == 'credit_tier') ? 'Select Credit Tier' : 'Select Eligible Offer',
+      minimumResultsForSearch: Infinity
     });
   }
 })

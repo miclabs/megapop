@@ -46,7 +46,7 @@
                     </div>
                   </td>
                   <td>
-                    <%= rate_card.rates.count %>
+                    <%= rate_card.rates.count + rate_card.rate_risk_adjustments.count %>
                   </td>
                   <td>
                     <% if rate_card.primary? %>
