@@ -41,6 +41,16 @@ $(document).ready(function(){
       }
     })
 
+    $(form).find('select.required:not(:hidden)').each(function(i, e){
+      fields[$(e).attr('name')] = {
+        validators: {
+          notEmpty: {
+            message: 'Field is required'
+          }
+        }
+      }
+    })
+
     return FormValidation.formValidation(
       form,
       {
@@ -61,4 +71,3 @@ $(document).ready(function(){
     });
   }
 })
-
