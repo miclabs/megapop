@@ -12,13 +12,27 @@ class RateCard < ApplicationRecord
 
   validates :name, presence: true
 
+  validates :rates, presence: true, if: :is_rate_type?
+  validates :rate_risk_adjustments, presence: true, if: :is_rate_risk_adjustment_type?
+
   scope :primary, -> { where(primary: true) }
 
   before_commit :update_primary
+
+  private ##
 
   def update_primary
     if primary?
       self.class.send(self.card_type).primary.where.not(id: id).update(primary: false)
     end
   end
+
+  def is_rate_type?
+    ['interest_rate', 'extension_rate'].include?(card_type)
+  end
+
+  def is_rate_risk_adjustment_type?
+    ['ir_risk_adjustment', 'er_risk_adjustment'].include?(card_type)
+  end
+
 end
