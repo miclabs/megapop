@@ -31,17 +31,7 @@ $(document).ready(function(){
 
   function validateForm(form){
     var fields = {}
-    $(form).find('input.required:not(:hidden)').each(function(i, e){
-      fields[$(e).attr('name')] = {
-        validators: {
-          notEmpty: {
-            message: 'Field is required'
-          }
-        }
-      }
-    })
-
-    $(form).find('select.required:not(:hidden)').each(function(i, e){
+    $(form).find('.required:not(:hidden)').each(function(i, e){
       fields[$(e).attr('name')] = {
         validators: {
           notEmpty: {
