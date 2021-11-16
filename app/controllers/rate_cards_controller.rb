@@ -53,7 +53,11 @@ class RateCardsController < ApplicationController
   def rate_card_params
     params.require(:rate_card).permit(
       :name, :card_type, :primary,
-      rates_attributes: [:id, :rate, :days, :_destroy]
+      rates_attributes: [:id, :rate, :days, :_destroy],
+      rate_risk_adjustments_attributes: [
+        :id, :min_score, :max_score, :risk_value,
+        :credit_tier, :eleigible_for_offer, :_destroy
+      ]
     )
   end
 end
