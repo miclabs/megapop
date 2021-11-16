@@ -22,7 +22,7 @@ $(document).ready(function(){
       $('.primary-exists').on('change', function(){
         $this = $(this);
         if($this.prop('checked')) {
-          confirmed = confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
+          confirmed = confirm("A primary rate card of " + $this.data('type') + " type is already exists. Do yo want to change?");
           $this.prop('checked', confirmed)
         }
       })

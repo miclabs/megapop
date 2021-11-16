@@ -40,7 +40,7 @@
                 <div class="col-2">
                   <span class="switch switch-primary">
                     <label>
-                     <%= f.check_box :primary, class: is_primary? ? 'primary-exists' : '' %>
+                     <%= f.check_box :primary, class: is_primary? ? 'primary-exists' : '', data: { type: rate_card_types[f.object.card_type.to_sym].downcase } %>
                       <span></span>
                     </label>
                     <label class="text-right ml-4">Primary</label>

@@ -22,6 +22,7 @@ class RateCardsController < ApplicationController
   def new
     @rate_card = RateCard.new card_type: params[:card_type]
     @rate_card.rates.build
+    @rate_card.rate_risk_adjustments.build
   end
 
   def create
