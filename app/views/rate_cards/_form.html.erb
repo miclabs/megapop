@@ -35,19 +35,6 @@
                 <%= render "rate_cards/rate_risk_adjustment_form", f: f %>
               <% end %>
 
-              <div class="form-group row">
-                <label class="col-lg-1 col-form-label text-lg-right"></label>
-                <div class="col-2">
-                  <span class="switch switch-primary">
-                    <label>
-                     <%= f.check_box :primary, class: is_primary? ? 'primary-exists' : '', data: { type: rate_card_types[f.object.card_type.to_sym].downcase } %>
-                      <span></span>
-                    </label>
-                    <label class="text-right ml-4">Primary</label>
-                  </span>
-                </div>
-              </div>
-
               <div class='separator separator-dashed mb-10'></div>
 
               <div class="form-group row">
