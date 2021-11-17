@@ -11,8 +11,10 @@
 //= require theme/plugins.bundle
 //= require theme/prismjs.bundle
 //= require theme/scripts.bundle
+//= require theme/uppy.bundle
 //= require theme/login-3
 //= require theme/profile
+//= require theme/wizard-1
 //= require theme/wizard-2
 //= require theme/datatables.bundle
 //= require jquery_ujs

@@ -13,4 +13,8 @@ module CollectionHelper
       extension_rate: 'Extension Rate'
     }
   end
+
+  def boolean_collection
+    [['Yes', true], ['No', false]]
+  end
 end
