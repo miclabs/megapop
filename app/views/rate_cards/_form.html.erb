@@ -29,44 +29,11 @@
           <%= f.hidden_field :card_type %>
           <form class="form">
             <div class="card-body">
-              <div class="form-group row">
-                <div class="col-lg-2">
-                  <h4>Rate card name</h4>
-                </div>
-                <div class="col-lg-4">
-                  <%= f.text_field :name, class: 'form-control form-control-lg form-control-solid required', placeholder:"Enter rate card name" %>
-                  <span class="form-text text-muted">Please enter your rate card name</span>
-                </div>
-
-                <div class="col-lg-4">
-                  <a href='#' id='add-btn' class="btn font-weight-bold  btn-icon">
-                    <i class="icon-2x text-dark-50 flaticon-plus mr-4"></i>
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <%= f.fields_for :rates do |rate|%>
-                  <%= render 'rate_fields', f: rate %>
-                <%end%>
-
-                <div class="links invisible">
-                  <%= link_to_add_association 'add rate', f, :rates %>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label class="col-lg-2 col-form-label text-lg-right"></label>
-                <div class="col-3">
-                  <span class="switch switch-primary">
-                    <label>
-                     <%= f.check_box :primary, class: is_primary? ? 'primary-exists' : '' %>
-                      <span></span>
-                    </label>
-                    <label class="text-right ml-4">Primary</label>
-                  </span>
-                </div>
-              </div>
+              <% if rate_types_collection.include? @rate_card.card_type.to_sym %>
+                <%= render "rate_cards/rate_form", f: f %>
+              <% else %>
+                <%= render "rate_cards/rate_risk_adjustment_form", f: f %>
+              <% end %>
 
               <div class='separator separator-dashed mb-10'></div>
 

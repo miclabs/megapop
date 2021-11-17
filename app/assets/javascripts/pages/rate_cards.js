@@ -7,6 +7,8 @@ $(document).ready(function(){
 
       $('#add-btn').click(function(){
         $('.links a').trigger('click');
+        initSelectRateRisk('credit_tier')
+        initSelectRateRisk('eleigible_for_offer')
         validators.destroy();
         validators = validateForm(form)
         return false;
@@ -22,16 +24,19 @@ $(document).ready(function(){
       $('.primary-exists').on('change', function(){
         $this = $(this);
         if($this.prop('checked')) {
-          confirmed = confirm("A primary rate card of interest rate type is already exists. Do yo want to change?");
+          confirmed = confirm("A primary rate card of " + $this.data('type') + " type is already exists. Do yo want to change?");
           $this.prop('checked', confirmed)
         }
       })
+
+      initSelectRateRisk('credit_tier')
+      initSelectRateRisk('eleigible_for_offer')
     }
   }
 
   function validateForm(form){
     var fields = {}
-    $(form).find('input.required:not(:hidden)').each(function(i, e){
+    $(form).find('.required:not(:hidden)').each(function(i, e){
       fields[$(e).attr('name')] = {
         validators: {
           notEmpty: {
@@ -60,5 +65,11 @@ $(document).ready(function(){
       KTUtil.scrollTop();
     });
   }
-})
 
+  function initSelectRateRisk(field){
+    $(`select[name*=${field}]`).select2({
+      placeholder: (field == 'credit_tier') ? 'Select Credit Tier' : 'Select Eligible Offer',
+      minimumResultsForSearch: Infinity
+    });
+  }
+})
