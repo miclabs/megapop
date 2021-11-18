@@ -1,25 +1,27 @@
 <div class="pb-5" data-wizard-type="step-content">
   <h4 class="mb-10 font-weight-bold text-dark">Megapop Offers</h4>
   <div class="row justify-content-between">
-    <div class="col-lg-4 p-5">
-      <div class="card">
-        <div class='card-body'>
-          <div class='row'>
-            <div class='col-6'>
-              <div class="radio-inline">
-                <label class="radio radio-solid">
-                  <%= f.radio_button :megapop_offer, 2 %>
-                  <span></span>
-                  2%
-                </label>
+    <% [2, 4, 5].each do |offer| %>
+      <div class="col-lg-4 p-5">
+        <div class="card">
+          <div class='card-body'>
+            <div class='row'>
+              <div class='col-6'>
+                <div class="radio-inline">
+                  <label class="radio radio-solid">
+                    <%= f.radio_button :megapop_offer, offer %>
+                    <span></span>
+                    2%
+                  </label>
+                </div>
               </div>
-            </div>
-            <div class="col-6">
-              <strong>30 days</strong>
+              <div class="col-6">
+                <strong>30 days</strong>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
