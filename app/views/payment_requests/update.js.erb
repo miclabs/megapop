@@ -1,0 +1,16 @@
+<% if @result %>
+  <% if @payment_request.submitted? %>
+    toastr.success("Created peyment request successfully");
+  <% else %>
+    $('form').attr('action', "<%= payment_request_path(@payment_request) %>").attr('method', 'put')
+    wizard.goNext();
+
+    if(wizard.getStep() == 5) {
+      $('#next-step').text('Submit')
+    } else {
+      $('#next-step').text('Next')
+    }
+  <% end %>
+<% else %>
+  toastr.error("<%=  @payment_request.errors.full_messages.to_sentence %>");
+<% end %>
