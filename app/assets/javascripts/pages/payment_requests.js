@@ -1,11 +1,12 @@
 $(document).ready(function(){
-  const Tus = Uppy.Tus;
+  const XHRUpload = Uppy.XHRUpload;
 	const ProgressBar = Uppy.ProgressBar;
 	const StatusBar = Uppy.StatusBar;
 	const Informer = Uppy.Informer;
 
   var initUploadDocument = function(){
 		var id = '#kt_uppy_3';
+    let field_name = 'payment_request[project_documents][]'
 
 		var uppyDrag = Uppy.Core({
 			autoProceed: true,
@@ -24,7 +25,7 @@ $(document).ready(function(){
 			hideAfterFinish: false
 		});
 		uppyDrag.use(Informer, { target: id + ' .uppy-informer'  });
-		uppyDrag.use(Tus, { endpoint: 'payment_requests/upload' });
+		uppyDrag.use(XHRUpload, { endpoint: '/payment_requests/upload' });
 
 		uppyDrag.on('complete', function(file) {
 			var imagePreview = "";
@@ -32,7 +33,7 @@ $(document).ready(function(){
 				var imageType = /image/;
 				var thumbnail = "";
 				if (imageType.test(value.type)){
-					thumbnail = '<div class="uppy-thumbnail"><img src="'+value.uploadURL+'"/></div>';
+					thumbnail = '<div class="uppy-thumbnail"><img src="'+value.response.body.uploadURL+'"/></div>';
 				}
 				var sizeLabel = "bytes";
 				var filesize = value.size;
@@ -45,24 +46,22 @@ $(document).ready(function(){
 					}
 				}
 				imagePreview += '<div class="uppy-thumbnail-container" data-id="'+value.id+'">'+thumbnail+' <span class="uppy-thumbnail-label">'+value.name+' ('+ Math.round(filesize, 2) +' '+sizeLabel+')</span><span data-id="'+value.id+'" class="uppy-remove-thumbnail"><i class="flaticon2-cancel-music"></i></span></div>';
+
+        console.log(value.response.body)
+        insertImageSignedId(value.response.body.signedId)
 			});
 
 			$(id + ' .uppy-thumbnails').append(imagePreview);
 		});
 
-    const insertImageSignedId = (form, input, signed_id) => {
+    const insertImageSignedId = (signed_id) => {
+      console.log(signed_id)
       const hiddenField = document.createElement("input")
       hiddenField.setAttribute("type", "hidden")
       hiddenField.setAttribute("value", signed_id)
-      hiddenField.name = 'files_1'
-      form.appendChild(hiddenField)
+      hiddenField.name = field_name
+      $('form').append(hiddenField)
     }
-
-    uppyDrag.on("complete", result => {
-      result.successful.forEach(file => {
-        insertImageSignedId(file)
-      })
-    })
 
 		$(document).on('click', id + ' .uppy-thumbnails .uppy-remove-thumbnail', function(){
 			var imageId = $(this).attr('data-id');

@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   resources :accounts
   resources :users
   resources :rate_cards
-  resources :payment_requests
+  resources :payment_requests do
+    collection do
+      post :upload
+    end
+  end
 end
