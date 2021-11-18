@@ -1,6 +1,7 @@
 <% if @result %>
   <% if @payment_request.submitted? %>
     toastr.success("Created peyment request successfully");
+    window.location.href = '/';
   <% else %>
     $('form').attr('action', "<%= payment_request_path(@payment_request) %>").attr('method', 'put')
     wizard.goNext();

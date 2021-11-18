@@ -1,0 +1,62 @@
+<div class="pb-5" data-wizard-type="step-content">
+  <div class="row">
+    <div class="col-xl-6">
+      <!--begin::Input-->
+      <div class="form-group">
+        <label>Address Line 1</label>
+        <%= ff.text_field :street_address_1, class: 'form-control form-control-solid form-control-lg required', value: current_user.street_address_1 %>
+        <span class="form-text text-muted">Please enter your address line 1.</span>
+      </div>
+      <!--end::Input-->
+    </div>
+    <div class="col-xl-6">
+      <!--begin::Input-->
+      <div class="form-group">
+        <label>Address Line 2</label>
+        <%= ff.text_field :street_address_2, class: 'form-control form-control-solid form-control-lg required', value: current_user.street_address_2 %>
+        <span class="form-text text-muted">Please enter your address line 2.</span>
+      </div>
+      <!--end::Input-->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <!--begin::Input-->
+      <div class="form-group">
+        <label>Postcode</label>
+        <%= ff.text_field :postcode, class: 'form-control form-control-solid form-control-lg required', value: current_user.postcode %>
+        <span class="form-text text-muted">Please enter your postcode.</span>
+      </div>
+      <!--end::Input-->
+    </div>
+    <div class="col-xl-6">
+      <!--begin::Input-->
+      <div class="form-group">
+        <label>City</label>
+        <%= ff.text_field :city, class: 'form-control form-control-solid form-control-lg required', value: current_user.city %>
+        <span class="form-text text-muted">Please enter your City.</span>
+      </div>
+      <!--end::Input-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6">
+      <!--begin::Input-->
+      <div class="form-group">
+        <label>State</label>
+        <%= ff.select :state, options_for_select(us_states, current_user.state), {}, class: 'form-control form-control-solid form-control-lg required' %>
+        <span class="form-text text-muted">Please enter your State.</span>
+      </div>
+      <!--end::Input-->
+    </div>
+    <div class="col-xl-6">
+      <!--begin::Select-->
+      <div class="form-group">
+        <label>Country</label>
+        <%= ff.select :country, options_for_select([['United States', 'US']], current_user.country), {}, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+      <!--end::Select-->
+    </div>
+  </div>
+</div>
