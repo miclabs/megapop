@@ -1,0 +1,68 @@
+<div class="pb-5" data-wizard-type="step-content">
+  <h4 class="mb-10 font-weight-bold text-dark">Tell About Your Sponsorship</h4>
+
+  <div class="form-group">
+    <label>Sponsorship Type</label>
+    <%= f.select :sponsorship_type, options_for_select(sponsorship_types_collection.invert, f.object.sponsorship_type), { prompt: "-- Select a sponsorship type --"}, class: "form-control form-control-solid form-control-lg required"%>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Brand</label>
+        <%= f.text_field :sponsor_name, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Social Platform</label>
+        <%= f.select :social_platform, options_for_select(social_platforms_collection, f.object.social_platform), {}, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Is Job Complete</label>
+        <%= f.select :job_complete, options_for_select(boolean_collection, f.object.job_complete), {}, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Date You Expect Payment</label>
+        <div class="input-group date" data-provide="datepicker">
+          <div class="input-group input-group-lg input-group-solid">
+            <%= f.text_field :expected_payment_date, class: 'form-control form-control-solid form-control-lg required' %>
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="la la-calendar"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Project Amount</label>
+        <%= f.text_field :project_amount, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="form-group">
+        <label>Amount Required</label>
+        <%= f.text_field :debt_amount, class: 'form-control form-control-solid form-control-lg required' %>
+      </div>
+    </div>
+  </div>
+</div>

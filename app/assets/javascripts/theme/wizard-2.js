@@ -329,7 +329,7 @@ var KTWizard2 = function () {
 			_wizardEl = KTUtil.getById('kt_wizard');
 			_formEl = KTUtil.getById('kt_form');
 
-			if(_wizardEl){
+			if(_formEl){
 				_initWizard();
 				_initValidation();
 			}

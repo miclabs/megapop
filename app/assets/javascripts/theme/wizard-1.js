@@ -303,8 +303,10 @@ var KTWizard1 = function () {
 			_wizardEl = KTUtil.getById('kt_wizard');
 			_formEl = KTUtil.getById('payment_requests_form');
 
-			_initWizard();
-			_initValidation();
+			if(_formEl) {
+				_initWizard();
+				_initValidation();
+			}
 		}
 	};
 }();
