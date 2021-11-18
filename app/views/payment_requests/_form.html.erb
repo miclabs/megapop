@@ -171,8 +171,8 @@
               <div class="col-xl-12 col-xxl-7">
                 <!--begin::Wizard Form-->
                 <%= form_for @payment_request, html: { id: 'payment_requests_form' }, remote: true, authenticity_token: true do |f| %>
+                  <%= f.hidden_field :status, id: 'payment-status' %>
                   <%= f.fields_for :created_by_attributes, @created_by_attributes do |ff|%>
-                    <%= ff.hidden_field :id, value: current_user.id %>
                     <!--begin::Wizard Step 1-->
                     <%= render 'payment_requests/step_1', ff: ff %>
                     <!--end::Wizard Step 1-->

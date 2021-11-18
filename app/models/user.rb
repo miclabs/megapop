@@ -26,4 +26,9 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+
+  # TODO change later
+  def credit_score
+    800
+  end
 end

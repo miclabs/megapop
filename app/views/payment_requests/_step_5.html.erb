@@ -1,7 +1,14 @@
 <div class="pb-5" data-wizard-type="step-content">
   <h4 class="mb-10 font-weight-bold text-dark">Megapop Offers</h4>
   <div class="row justify-content-between">
-    <% [2, 4, 5].each do |offer| %>
+    <%= f.fields_for :payment_debits do |fp| %>
+      <%= fp.hidden_field :id %>
+      <%= fp.hidden_field :rate_id %>
+      <%= fp.hidden_field :rate_risk_adjustment_id %>
+      <%= fp.hidden_field :collection_amount %>
+      <%= fp.hidden_field :collection_date %>
+      <%= fp.hidden_field :credit_score %>
+
       <div class="col-lg-4 p-5">
         <div class="card">
           <div class='card-body'>
@@ -9,14 +16,14 @@
               <div class='col-6'>
                 <div class="radio-inline">
                   <label class="radio radio-solid">
-                    <%= f.radio_button :megapop_offer, offer %>
+                    <%= fp.radio_button :active, true %>
                     <span></span>
-                    2%
+                    <%= fp.object.collection_amount %>%
                   </label>
                 </div>
               </div>
               <div class="col-6">
-                <strong>30 days</strong>
+                <strong><%= (fp.object.collection_date.to_date - Time.now.to_date).to_i + 1 %> days</strong>
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ $(document).ready(function(){
           maxFileSize: 1000000, // 1mb
           maxNumberOfFiles: 5,
           minNumberOfFiles: 1,
-          allowedFileTypes: [".pdf", ".xlsx", '.doc', '.docx']
+          allowedFileTypes: [".pdf", ".xlsx", '.doc', '.docx', 'image/*']
         }
       });
 
@@ -112,6 +112,11 @@ $(document).ready(function(){
           KTUtil.scrollTop();
         }
       });
+    })
+
+    $('input[type=radio]').change(function(){
+      $('input[type=radio]').prop('checked', false)
+      $(this).prop('checked', true)
     })
   }
 })

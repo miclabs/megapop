@@ -7,9 +7,8 @@
     wizard.goNext();
 
     if(wizard.getStep() == 5) {
+      $('#payment-status').val('submitted')
       $('#next-step').text('Submit')
-    } else {
-      $('#next-step').text('Next')
     }
   <% end %>
 <% else %>

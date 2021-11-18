@@ -5,7 +5,7 @@ class PaymentRequestsController < ApplicationController
 
   def create
     @payment_request = PaymentRequest.new payment_request_params.merge(created_by_id: current_user.id)
-
+   
     respond_to do |format|
       format.html { }
       format.js {
@@ -17,8 +17,10 @@ class PaymentRequestsController < ApplicationController
   def update
     @result = @payment_request.update payment_request_params
 
-    if @payment_request.megapop_offer.present?
-      @payment_request.update(status: :submitted)
+    if @payment_request.submitted?
+      @payment_request.payment_debits.where(active: false).destroy_all
+    else
+      @payment_request.payment_debits.destroy_all 
     end
 
     respond_to do |format|
@@ -28,7 +30,8 @@ class PaymentRequestsController < ApplicationController
   end
 
   def new
-    @payment_request = PaymentRequest.new
+    @payment_request = PaymentRequest.new created_by_id: current_user.id
+    @payment_request.init_payment_debits
   end
 
   def upload
@@ -47,13 +50,11 @@ class PaymentRequestsController < ApplicationController
     params
     params.require(:payment_request).permit(
       :sponsor_name, :social_platform, :project_amount, :debt_amount,
-      :expected_payment_date, :job_complete, :sponsorship_type,
-      :status, :default, :project_documents, :megapop_offer, project_documents: []
-      # created_by_attributes: [
-      #   :id, :zip_code, :phone_number, :first_name, :dob,
-      #   :last_name, :street_address_1, :street_address_2, :postcode,
-      #   :city, :state, :email, :country
-      # ]
+      :expected_payment_date, :job_complete, :sponsorship_type, :status,
+      :status, :default, :project_documents, :megapop_offer, project_documents: [],
+      payment_debits_attributes: [
+        :id, :active, :rate_id, :rate_risk_adjustment_id, :collection_amount, :collection_date, :credit_score
+      ]
     )
   end
 
