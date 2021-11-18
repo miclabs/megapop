@@ -24,7 +24,7 @@ $(document).ready(function(){
 			hideAfterFinish: false
 		});
 		uppyDrag.use(Informer, { target: id + ' .uppy-informer'  });
-		uppyDrag.use(Tus, { endpoint: 'https://master.tus.io/files/' });
+		uppyDrag.use(Tus, { endpoint: 'payment_requests/upload' });
 
 		uppyDrag.on('complete', function(file) {
 			var imagePreview = "";
@@ -49,6 +49,20 @@ $(document).ready(function(){
 
 			$(id + ' .uppy-thumbnails').append(imagePreview);
 		});
+
+    const insertImageSignedId = (form, input, signed_id) => {
+      const hiddenField = document.createElement("input")
+      hiddenField.setAttribute("type", "hidden")
+      hiddenField.setAttribute("value", signed_id)
+      hiddenField.name = 'files_1'
+      form.appendChild(hiddenField)
+    }
+
+    uppyDrag.on("complete", result => {
+      result.successful.forEach(file => {
+        insertImageSignedId(file)
+      })
+    })
 
 		$(document).on('click', id + ' .uppy-thumbnails .uppy-remove-thumbnail', function(){
 			var imageId = $(this).attr('data-id');

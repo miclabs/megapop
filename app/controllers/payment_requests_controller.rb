@@ -31,6 +31,10 @@ class PaymentRequestsController < ApplicationController
     @payment_request = PaymentRequest.new
   end
 
+  def upload
+    p params
+  end
+
   private ##
 
   def payment_request_params
