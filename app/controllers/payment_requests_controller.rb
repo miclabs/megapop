@@ -17,12 +17,6 @@ class PaymentRequestsController < ApplicationController
   def update
     @result = @payment_request.update payment_request_params
 
-    if @payment_request.submitted?
-      @payment_request.payment_debits.where(active: false).destroy_all
-    else
-      @payment_request.payment_debits.destroy_all 
-    end
-
     respond_to do |format|
       format.html { }
       format.js { }
@@ -54,6 +48,10 @@ class PaymentRequestsController < ApplicationController
       :status, :default, :project_documents, :megapop_offer, project_documents: [],
       payment_debits_attributes: [
         :id, :active, :rate_id, :rate_risk_adjustment_id, :collection_amount, :collection_date, :credit_score
+      ],
+      created_by_attributes: [
+        :street_address_1, :street_address_2, :id,
+        :postcode, :city, :state, :country
       ]
     )
   end

@@ -4,7 +4,8 @@ class PaymentRequest < ApplicationRecord
   has_many_attached :project_documents
   has_many :payment_debits
 
-  accepts_nested_attributes_for :payment_debits, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :payment_debits, reject_if: :reject_debits, allow_destroy: true
+  accepts_nested_attributes_for :created_by
 
   # validate unless: :draft?
 
@@ -28,5 +29,11 @@ class PaymentRequest < ApplicationRecord
         )
       end
     end
+  end
+
+  private ##
+
+  def reject_debits(attributes)
+    attributes['active'].blank?
   end
 end

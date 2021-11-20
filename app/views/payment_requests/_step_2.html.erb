@@ -4,6 +4,7 @@
       <!--begin::Input-->
       <div class="form-group">
         <label>Address Line 1</label>
+        <%= ff.hidden_field :id, value: current_user.id %>
         <%= ff.text_field :street_address_1, class: 'form-control form-control-solid form-control-lg required', value: current_user.street_address_1 %>
         <span class="form-text text-muted">Please enter your address line 1.</span>
       </div>
