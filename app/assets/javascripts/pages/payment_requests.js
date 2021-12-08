@@ -1,3 +1,5 @@
+var _wizardObj = null;
+
 $(document).ready(function(){
   if($('body.payment_requests').length){ 
     const XHRUpload = Uppy.XHRUpload;
@@ -106,7 +108,38 @@ $(document).ready(function(){
 
       validations.validate().then(function (status) {
         if (status == 'Valid') {
-          $(form).submit()
+          if(_wizardObj.getStep() == 5) {
+            Swal.fire({
+              text: "All is good! Please confirm the form submission.",
+              icon: "success",
+              showCancelButton: true,
+              buttonsStyling: false,
+              confirmButtonText: "Yes, submit!",
+              cancelButtonText: "No, cancel",
+              customClass: {
+                confirmButton: "btn font-weight-bold btn-primary",
+                cancelButton: "btn font-weight-bold btn-default"
+              }
+            }).then(function (result) {
+              if (result.value) {
+                $(form).submit()
+              } else if (result.dismiss === 'cancel') {
+                Swal.fire({
+                  text: "Your form has not been submitted!.",
+                  icon: "error",
+                  buttonsStyling: false,
+                  confirmButtonText: "Ok, got it!",
+                  customClass: {
+                    confirmButton: "btn font-weight-bold btn-primary",
+                  }
+                });
+              }
+            });
+          }
+          else {
+            $(form).submit()
+          }
+
           KTUtil.scrollTop();
         } else {
           KTUtil.scrollTop();
@@ -118,5 +151,10 @@ $(document).ready(function(){
       $('input[type=radio]').prop('checked', false)
       $(this).prop('checked', true)
     })
+
+    _wizardObj = new KTWizard(KTUtil.getById('payment-requests-steps'), {
+      startStep: 1,
+      clickableSteps: false
+    });
   }
 })

@@ -1,12 +1,12 @@
 <% if @result %>
   <% if @payment_request.submitted? %>
-    toastr.success("Created peyment request successfully");
-    window.location.href = '/';
+    toastr.success("Created payment request successfully");
+    window.location.href = '/payment_requests';
   <% else %>
     $('form').attr('action', "<%= payment_request_path(@payment_request) %>").attr('method', 'put')
-    wizard.goNext();
+    _wizardObj.goNext();
 
-    if(wizard.getStep() == 5) {
+    if(_wizardObj.getStep() == 5) {
       $('#payment-status').val('submitted')
       $('#next-step').text('Submit')
     }

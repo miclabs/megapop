@@ -312,7 +312,7 @@ var KTWizard1 = function () {
 }();
 
 jQuery(document).ready(function () {
-	KTWizard1.init();
+	// KTWizard1.init();
 });
 
 /******/ })()
