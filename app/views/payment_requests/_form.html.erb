@@ -172,6 +172,7 @@
                 <!--begin::Wizard Form-->
                 <%= form_for @payment_request, html: { id: 'payment_requests_form' }, remote: true, authenticity_token: true do |f| %>
                   <%= f.hidden_field :status, id: 'payment-status' %>
+                  <%= hidden_field_tag :step, 1, id: 'payment-step' %>
                   <%= f.fields_for :created_by_attributes, @created_by_attributes do |ff|%>
                     <!--begin::Wizard Step 1-->
                     <%= render 'payment_requests/step_1', ff: ff %>

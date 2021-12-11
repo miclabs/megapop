@@ -1,5 +1,7 @@
 <% if @result %>
-  <% if @payment_request.submitted? %>
+  $('#payment-step').val(_wizardObj.getStep());
+  
+  <% if @payment_request.submitted? && params[:step].to_i == 4 %>
     toastr.success("Created payment request successfully");
     window.location.href = '/payment_requests';
   <% else %>

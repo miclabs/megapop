@@ -1,1 +1,82 @@
-index.html.erb
+<div class="content d-flex flex-column flex-column-fluid users" id="kt_content">
+  <div class="d-flex flex-column-fluid">
+    <div class="container">
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">  Payment Requests
+              <span class="d-block text-muted pt-2 font-size-sm">Payment request listing &amp; management</span>
+            </h3>
+          </div>
+          <div class="card-toolbar">
+
+            <a href="<%= new_payment_request_path %>" class="btn btn-primary font-weight-bolder">
+            <span class="svg-icon svg-icon-md">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <rect x="0" y="0" width="24" height="24" />
+                  <circle fill="#000000" cx="9" cy="15" r="6" />
+                  <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
+                </g>
+              </svg>
+            </span>New Payment Request</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="datatable table table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="kt_datatable">
+            <thead>
+              <tr>
+                <th>Day Submitted</th>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Status</th>
+                <th>Contract</th>
+                <th>Popped</th>
+                <th>Debit Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @payment_requets.each do |payment_request| %>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center user-name">
+                      <div class="ml-4">
+                        <div class="text-dark-75 font-weight-bolder font-size-lg mb-0"><%= payment_request.updated_at.strftime('%d.%m.%Y') %></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <%= payment_request.code %>
+                  </td>
+                  <td>
+                    <%= payment_request.sponsor_name %>
+                  </td>
+                  <td>
+                    <%= payment_request.status.titleize %>
+                  </td>
+                   <td>
+                    <%= number_to_currency(payment_request.project_amount, precision: 0) %>
+                  </td>
+                  <td>
+                    <%= number_to_currency(payment_request.debt_amount, precision: 0) %>
+                  </td>
+                  <td><%= payment_request.expected_payment_date&.strftime('%d.%m.%Y') %></td>
+                  <td width='200px'>
+                    <%= link_to payment_request, class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
+                      <i class='fa fa-eye'></i>
+                    <% end %>
+
+                    <%= link_to [:edit, payment_request], class: 'btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2' do %>
+                      <i class='fa fa-edit'></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

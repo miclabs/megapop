@@ -1,7 +1,11 @@
 class PaymentRequestsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_payment_request, only: [:update]
+  before_action :set_payment_request, only: [:update, :edit]
   skip_before_action :verify_authenticity_token, only: [:upload]
+
+  def index
+    @payment_requets = PaymentRequest.all
+  end
 
   def create
     @payment_request = PaymentRequest.new payment_request_params.merge(created_by_id: current_user.id)
@@ -12,6 +16,10 @@ class PaymentRequestsController < ApplicationController
         @payment_request.save
       }
     end
+  end
+
+  def edit
+    @payment_request.init_payment_debits
   end
 
   def update
