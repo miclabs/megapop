@@ -11,7 +11,11 @@ class PaymentRequest < ApplicationRecord
 
   enum social_platform: ['Instagram', 'YouTube', 'TikTok', 'Twitter', 'Facebook']
   enum sponsorship_type: [:brand, :agency, :influencer_platform]
-  enum status: [:draft, :submitted]
+  enum status: [:draft, :submitted, :approved]
+
+  default_scope -> { order(created_at: :desc) }
+
+  before_create :set_code
 
   def init_payment_debits
     rates = RateCard.primary.interest_rate.first.rates
@@ -26,12 +30,18 @@ class PaymentRequest < ApplicationRecord
           collection_amount: rate.rate + adj.risk_value,
           collection_date: rate.days.days.from_now,
           credit_score: nil
-        )
+        ) unless self.payment_debits.where(rate: rate, rate_risk_adjustment: adj).any?
       end
     end
   end
 
   private ##
+
+  def set_code
+    begin
+      self.code = SecureRandom.hex(5).upcase
+    end while self.class.exists?(code: code)
+  end
 
   def reject_debits(attributes)
     attributes['active'].blank?
