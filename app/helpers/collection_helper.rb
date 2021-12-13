@@ -16,6 +16,10 @@ module CollectionHelper
     }
   end
 
+  def boolean_collection
+    [['Yes', true], ['No', false]]
+  end
+
   def rate_types_collection
     [:interest_rate, :extension_rate]
   end

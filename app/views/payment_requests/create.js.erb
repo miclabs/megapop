@@ -1,0 +1,6 @@
+<% if @payment_request.valid? %>
+  $('form').attr('action', "<%= payment_request_path(@payment_request) %>").attr('method', 'put')
+  _wizardObj.goNext()
+<% else %>
+  toastr.error("<%=  @payment_request.errors.full_messages.to_sentence %>");
+<% end %>

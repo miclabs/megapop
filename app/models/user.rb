@@ -7,6 +7,7 @@ class User < ApplicationRecord
   enum role: { creator: 0, admin: 1, credit_manager: 2}
 
   has_many :rate_cards
+  has_many :payment_requests
 
   validates_presence_of :ssn, :zip_code,
   	:phone_number, :first_name, :last_name,
@@ -24,5 +25,10 @@ class User < ApplicationRecord
     result = update(params, *options)
     clean_up_passwords
     result
+  end
+
+  # TODO change later
+  def credit_score
+    800
   end
 end

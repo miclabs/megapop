@@ -1,0 +1,18 @@
+<% if @result %>
+  $('#payment-step').val(_wizardObj.getStep());
+  
+  <% if @payment_request.submitted? && params[:step].to_i == 4 %>
+    toastr.success("Created payment request successfully");
+    window.location.href = '/payment_requests';
+  <% else %>
+    $('form').attr('action', "<%= payment_request_path(@payment_request) %>").attr('method', 'put')
+    _wizardObj.goNext();
+
+    if(_wizardObj.getStep() == 5) {
+      $('#payment-status').val('submitted')
+      $('#next-step').text('Submit')
+    }
+  <% end %>
+<% else %>
+  toastr.error("<%=  @payment_request.errors.full_messages.to_sentence %>");
+<% end %>
